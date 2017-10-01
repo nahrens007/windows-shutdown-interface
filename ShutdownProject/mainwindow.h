@@ -14,6 +14,12 @@
 #include <QPushButton>
 #include <QAction>
 #include <QLabel>
+#include <QDateTime>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QDateTimeEdit>
+
+#include <shutdownthread.h>
 
 class MainWindow : public QMainWindow
 {
@@ -28,11 +34,12 @@ private:
     QPushButton *shutdownButton;
     QPushButton *cancelButton;
     QPushButton *exitButton;
-    void countdown(int hours, int minutes, int seconds);
+    ShutdownThread *shutdownThread;
+    QDateTimeEdit *dateTimeEdit;
     void createWindow();
 
 private slots:
-    void shutdownClicked() const;
+    void shutdownClicked();
     void cancelClicked() const;
     void exitClicked();
 };

@@ -205,9 +205,6 @@ release/moc_mainwindow.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
@@ -414,9 +411,6 @@ release/main.o: ../ShutdownProject/main.cpp ../ShutdownProject/mainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
@@ -552,9 +546,6 @@ release/mainwindow.o: ../ShutdownProject/mainwindow.cpp ../ShutdownProject/mainw
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \

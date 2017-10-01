@@ -28,7 +28,13 @@ private:
     QPushButton *shutdownButton;
     QPushButton *cancelButton;
     QPushButton *exitButton;
+    void countdown(int hours, int minutes, int seconds);
+    void createWindow();
 
+private slots:
+    void shutdownClicked() const;
+    void cancelClicked() const;
+    void exitClicked();
 };
 
 #endif // MAINWINDOW_H

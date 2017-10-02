@@ -46,11 +46,6 @@ void ShutdownThread::cancelShutdown()
 
 void ShutdownThread::setDateTime(QDateTime time)
 {
-    // validate time
-    if (QDateTime::currentDateTime().secsTo(time) < 0)
-        // invalid (past) time - exit
-        return;
-
     this->shutdown = true;
     this->shutdownTime = time;
     return;

@@ -231,6 +231,18 @@ release/moc_mainwindow.cpp: S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidget
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QInputDialog \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QGroupBox \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
 		../ShutdownProject/shutdownthread.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/QThread \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qthread.h \
@@ -443,6 +455,18 @@ release/main.o: ../ShutdownProject/main.cpp ../ShutdownProject/mainwindow.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QInputDialog \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QGroupBox \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
 		../ShutdownProject/shutdownthread.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/QThread \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qthread.h \
@@ -582,6 +606,18 @@ release/mainwindow.o: ../ShutdownProject/mainwindow.cpp ../ShutdownProject/mainw
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QInputDialog \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/QGroupBox \
+		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
 		../ShutdownProject/shutdownthread.h \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/QThread \
 		S:/Program\ Files/Qt/5.8/mingw53_32/include/QtCore/qthread.h \

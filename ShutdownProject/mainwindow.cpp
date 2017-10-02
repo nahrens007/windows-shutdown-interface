@@ -28,22 +28,29 @@ MainWindow::~MainWindow()
     delete currentTime;
     delete remainingTime;
     delete timeSet;
+    delete hoursInput;
+    delete minutesInput;
+    delete secondsInput;
+    delete timeRadioButton;
+    delete countdownRadioButton;
 }
 
 void MainWindow::createWindow()
 {
-
     /* create and format GUI components */
 
-    // create buttons and add their slots
-    shutdownButton = new QPushButton("&Shutdown");
-    cancelButton = new QPushButton("&Cancel");
-    exitButton = new QPushButton("E&xit");
+    /* Radio button for whether we are shutting down in x amount of time
+     * or at a specified date/time */
+    QGroupBox *groupBox = new QGroupBox;
+    timeRadioButton = new QRadioButton(tr("Time"));
+    countdownRadioButton = new QRadioButton(tr("Countdown"));
 
-    // connect the button signals with the slots
-    connect(shutdownButton, SIGNAL(clicked()), this, SLOT(shutdownClicked()));
-    connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelClicked()));
-    connect(exitButton, SIGNAL(clicked()), this, SLOT(exitClicked()));
+    timeRadioButton->setChecked(true);
+
+    QHBoxLayout *radioButtonLayout = new QHBoxLayout;
+    radioButtonLayout->addWidget(timeRadioButton);
+    radioButtonLayout->addWidget(countdownRadioButton);
+    groupBox->setLayout(radioButtonLayout);
 
     // Create and format the DateTime selector
     dateTimeEdit = new QDateTimeEdit;
@@ -71,6 +78,16 @@ void MainWindow::createWindow()
     remainingTimeLayout->addWidget(new QLabel("Remaining time:"));
     remainingTimeLayout->addWidget(remainingTime);
 
+    // create buttons and add their slots
+    shutdownButton = new QPushButton("&Shutdown");
+    cancelButton = new QPushButton("&Cancel");
+    exitButton = new QPushButton("E&xit");
+
+    // connect the button signals with the slots
+    connect(shutdownButton, SIGNAL(clicked()), this, SLOT(shutdownClicked()));
+    connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelClicked()));
+    connect(exitButton, SIGNAL(clicked()), this, SLOT(exitClicked()));
+
     // Layout for the buttons
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(shutdownButton);
@@ -80,6 +97,7 @@ void MainWindow::createWindow()
     // Add everything to the main layout
     this->centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addWidget(groupBox);
     mainLayout->addLayout(dateTimeLayout);
     mainLayout->addLayout(currentTimeLayout);
     mainLayout->addLayout(remainingTimeLayout);
@@ -91,7 +109,7 @@ void MainWindow::createWindow()
     this->setCentralWidget(this->centralWidget);
 
     this->setWindowTitle("Shutdown");
-    this->setFixedSize(QSize(300, 125));
+    this->setFixedSize(QSize(300, 150));
 
     // Start new thread for updating the current and remaing time
     QtConcurrent::run(this, MainWindow::updateTime);

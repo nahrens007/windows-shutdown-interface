@@ -17,6 +17,9 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QDateTimeEdit>
+#include <QInputDialog>
+#include <QRadioButton>
+#include <QGroupBox>
 
 #include <shutdownthread.h>
 
@@ -38,6 +41,12 @@ private:
     QLabel *currentTime;
     QLabel *remainingTime;
     QDateTime *timeSet;
+    QInputDialog *hoursInput;
+    QInputDialog *minutesInput;
+    QInputDialog *secondsInput;
+    QRadioButton *timeRadioButton;
+    QRadioButton *countdownRadioButton;
+
     void createWindow();
     void updateTime();
     int calculateHours() const;

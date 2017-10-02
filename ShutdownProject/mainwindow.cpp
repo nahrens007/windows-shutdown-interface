@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     // delete all pointers
+    delete timeRadioButton;
+    delete countdownRadioButton;
     delete shutdownButton;
     delete cancelButton;
     delete exitButton;
@@ -31,8 +33,6 @@ MainWindow::~MainWindow()
     delete hoursInput;
     delete minutesInput;
     delete secondsInput;
-    delete timeRadioButton;
-    delete countdownRadioButton;
 }
 
 void MainWindow::createWindow()

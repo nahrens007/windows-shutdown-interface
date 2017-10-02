@@ -21,6 +21,8 @@ void ShutdownThread::run()
             // time to shutdown
             QProcess::startDetached("C:\\Windows\\System32\\notepad.exe");
             //QProcess::startDetached("C:\\Windows\\System32\\shutdown.exe /s /f /t 0");
+
+            // Make sure to end thread once this condition is reached.
             return;
         }
 

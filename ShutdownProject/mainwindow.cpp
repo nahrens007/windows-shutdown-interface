@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     // ensure that the time set is null
     this->timeSet = 0;
-
+    this->running = true;
     // create the GUI window
     this->createWindow();
 
@@ -105,7 +105,7 @@ void MainWindow::updateTime()
     QDateTime dateTime;
 
     // Update times as long as the thread is active
-    while (true)
+    while (this->running)
     {
         dateTime = QDateTime::currentDateTime();
         QDate date = dateTime.date();
@@ -153,10 +153,18 @@ void MainWindow::cancelClicked()
 // Slot for exit button clicked
 void MainWindow::exitClicked()
 {
+    this->running = false;
     this->close();
     return;
 }
 
+// Overrite the close event to ensure the child threads are closed.
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    this->running = false;
+    this->close();
+    return;
+}
 int MainWindow::calculateHours() const
 {
     // Calculate and return hours
@@ -173,3 +181,5 @@ int MainWindow::calculateSeconds() const
 {
     return QDateTime::currentDateTime().secsTo(*this->timeSet) % 60;
 }
+
+

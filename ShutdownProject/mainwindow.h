@@ -43,11 +43,15 @@ private:
     int calculateHours() const;
     int calculateMinutes() const;
     int calculateSeconds() const;
+    bool running;
 
 private slots:
     void shutdownClicked();
     void cancelClicked();
     void exitClicked();
+
+protected:
+    virtual void closeEvent(QCloseEvent *);
 
 };
 

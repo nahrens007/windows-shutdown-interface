@@ -30,9 +30,9 @@ MainWindow::~MainWindow()
     delete currentTime;
     delete remainingTime;
     delete timeSet;
-    delete hoursInput;
-    delete minutesInput;
-    delete secondsInput;
+    delete hoursSpinner;
+    delete minutesSpinner;
+    delete secondsSpinner;
 }
 
 void MainWindow::createWindow()
@@ -52,6 +52,27 @@ void MainWindow::createWindow()
     radioButtonLayout->addWidget(countdownRadioButton);
     groupBox->setLayout(radioButtonLayout);
 
+    /*
+     * QInputDialogs for hours, minutes, and seconds of countdown
+     */
+    hoursSpinner = new QSpinBox;
+    minutesSpinner = new QSpinBox;
+    secondsSpinner = new QSpinBox;
+    hoursSpinner->setMinimum(0);
+    minutesSpinner->setMinimum(0);
+    secondsSpinner->setMinimum(0);
+    hoursSpinner->setValue(0);
+    minutesSpinner->setValue(0);
+    secondsSpinner->setValue(0);
+
+    QHBoxLayout *spinnerLayout = new QHBoxLayout;
+    spinnerLayout->addWidget(new QLabel("Hours:"));
+    spinnerLayout->addWidget(hoursSpinner);
+    spinnerLayout->addWidget(new QLabel("Minutes:"));
+    spinnerLayout->addWidget(minutesSpinner);
+    spinnerLayout->addWidget(new QLabel("Seconds:"));
+    spinnerLayout->addWidget(secondsSpinner);
+
     // Create and format the DateTime selector
     dateTimeEdit = new QDateTimeEdit;
     dateTimeEdit->setDisplayFormat("MM/dd/yyyy hh:mm:ss");
@@ -64,7 +85,7 @@ void MainWindow::createWindow()
 
     // Label for the current time
     currentTime = new QLabel;
-
+    currentTime->setFont(QFont("Arial", 10, -1, false));
     // Layout for the current time
     QHBoxLayout *currentTimeLayout = new QHBoxLayout;
     currentTimeLayout->addWidget(new QLabel("Current time:"));
@@ -72,6 +93,7 @@ void MainWindow::createWindow()
 
     // Label for the remaining time
     remainingTime = new QLabel;
+    remainingTime->setFont(QFont("Arial", 10, -1, false));
 
     // Layout for the remaining time
     QHBoxLayout *remainingTimeLayout = new QHBoxLayout;
@@ -99,6 +121,7 @@ void MainWindow::createWindow()
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(groupBox);
     mainLayout->addLayout(dateTimeLayout);
+    mainLayout->addLayout(spinnerLayout);
     mainLayout->addLayout(currentTimeLayout);
     mainLayout->addLayout(remainingTimeLayout);
     mainLayout->addLayout(buttonLayout);
@@ -109,7 +132,7 @@ void MainWindow::createWindow()
     this->setCentralWidget(this->centralWidget);
 
     this->setWindowTitle("Shutdown");
-    this->setFixedSize(QSize(300, 150));
+    this->setFixedSize(QSize(300, 200));
 
     // Start new thread for updating the current and remaing time
     QtConcurrent::run(this, MainWindow::updateTime);
@@ -134,7 +157,7 @@ void MainWindow::updateTime()
                                    QString("%1").arg(time.hour(), 2, 10, QChar('0')) + ":" + QString("%1").arg(time.minute(), 2, 10, QChar('0')) + ":" + QString("%1").arg(time.second(), 2, 10, QChar('0')));
 
         // If the time has not been set for shutdown yet, do not calculate remaining time.
-        if (this->timeSet != 0)
+        if (this->timeSet != 0 && QDateTime::currentDateTime().secsTo(*this->timeSet) > 0)
             this->remainingTime->setText(QString("%1").arg(calculateHours(), 2, 10, QChar('0')) + ":" + QString("%1").arg(calculateMinutes(), 2, 10, QChar('0')) + ":" + QString("%1").arg(calculateSeconds(), 2, 10, QChar('0')));
         else
             this->remainingTime->setText("");
@@ -150,9 +173,17 @@ void MainWindow::shutdownClicked()
 {
     // Start the shutdown timer process
     delete timeSet;
-    this->timeSet = new QDateTime;
-    this->timeSet->setDate(dateTimeEdit->date());
-    this->timeSet->setTime(dateTimeEdit->time());
+
+    if (timeRadioButton->isChecked())
+    {
+        this->timeSet = new QDateTime;
+        this->timeSet->setDate(dateTimeEdit->date());
+        this->timeSet->setTime(dateTimeEdit->time());
+    } else
+    {
+        this->timeSet = new QDateTime(QDateTime::currentDateTime());
+        this->timeSet = new QDateTime(this->timeSet->addSecs((hoursSpinner->value() * 60 * 60) + minutesSpinner->value() * 60 + secondsSpinner->value()));
+    }
     this->shutdownThread->setDateTime(*this->timeSet);
     this->shutdownThread->start();
     return;
@@ -171,18 +202,30 @@ void MainWindow::cancelClicked()
 // Slot for exit button clicked
 void MainWindow::exitClicked()
 {
-    this->running = false;
-    this->close();
-    return;
+    this->closeWindow();
 }
 
 // Overrite the close event to ensure the child threads are closed.
 void MainWindow::closeEvent(QCloseEvent *)
 {
+    this->closeWindow();
+    return;
+}
+
+void MainWindow::closeWindow()
+{
+    // quit the process for updating the remaining and current time labels
     this->running = false;
+
+    // Kill the shutdown timer process and wait for it to terminate
+    this->shutdownThread->cancelShutdown();
+    shutdownThread->wait();
+
+    // Close the MainWindow
     this->close();
     return;
 }
+
 int MainWindow::calculateHours() const
 {
     // Calculate and return hours

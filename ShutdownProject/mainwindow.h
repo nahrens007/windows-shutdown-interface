@@ -17,7 +17,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QDateTimeEdit>
-#include <QInputDialog>
+#include <QSpinBox>
 #include <QRadioButton>
 #include <QGroupBox>
 
@@ -41,9 +41,9 @@ private:
     QLabel *currentTime;
     QLabel *remainingTime;
     QDateTime *timeSet;
-    QInputDialog *hoursInput;
-    QInputDialog *minutesInput;
-    QInputDialog *secondsInput;
+    QSpinBox *hoursSpinner;
+    QSpinBox *minutesSpinner;
+    QSpinBox *secondsSpinner;
     QRadioButton *timeRadioButton;
     QRadioButton *countdownRadioButton;
 
@@ -52,6 +52,7 @@ private:
     int calculateHours() const;
     int calculateMinutes() const;
     int calculateSeconds() const;
+    void closeWindow();
     bool running;
 
 private slots:

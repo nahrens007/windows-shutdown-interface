@@ -26,9 +26,8 @@ void ShutdownThread::run()
             return;
         }
 
-        QThread::sleep(1); // wait 1 second in between each check to avoid using too much resources
+        QThread::msleep(100); // wait 1/10th second in between each check to avoid using too much resources
     }
-
     /* Return to exit thread. If program gets this far,
      * user has chosen not to shutdown system so process
      * needs to exit. */

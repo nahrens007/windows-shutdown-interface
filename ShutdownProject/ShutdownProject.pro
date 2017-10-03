@@ -29,3 +29,5 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     shutdownthread.h
+
+FORMS +=

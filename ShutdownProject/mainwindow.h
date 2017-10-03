@@ -20,6 +20,7 @@
 #include <QSpinBox>
 #include <QRadioButton>
 #include <QGroupBox>
+#include <QFrame>
 
 #include <shutdownthread.h>
 

@@ -116,11 +116,18 @@ void MainWindow::createWindow()
     buttonLayout->addWidget(cancelButton);
     buttonLayout->addWidget(exitButton);
 
+    QFrame *line = new QFrame;
+    line->setFrameShape(QFrame::HLine);
+    line->setFrameShadow(QFrame::Sunken);
+
     // Add everything to the main layout
     this->centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(groupBox);
+    mainLayout->addWidget(new QLabel("Specific time"));
     mainLayout->addLayout(dateTimeLayout);
+    mainLayout->addWidget(line);
+    mainLayout->addWidget(new QLabel("Countdown time"));
     mainLayout->addLayout(spinnerLayout);
     mainLayout->addLayout(currentTimeLayout);
     mainLayout->addLayout(remainingTimeLayout);
@@ -132,7 +139,7 @@ void MainWindow::createWindow()
     this->setCentralWidget(this->centralWidget);
 
     this->setWindowTitle("Shutdown");
-    this->setFixedSize(QSize(300, 200));
+    this->setFixedSize(QSize(300, 250));
 
     // Start new thread for updating the current and remaing time
     QtConcurrent::run(this, MainWindow::updateTime);

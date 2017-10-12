@@ -47,6 +47,7 @@ private:
     QSpinBox *secondsSpinner;
     QRadioButton *timeRadioButton;
     QRadioButton *countdownRadioButton;
+    QWidget *timeWidget;
 
     void createWindow();
     void updateTime();
@@ -60,6 +61,7 @@ private slots:
     void shutdownClicked();
     void cancelClicked();
     void exitClicked();
+    void radioChanged();
 
 protected:
     virtual void closeEvent(QCloseEvent *);

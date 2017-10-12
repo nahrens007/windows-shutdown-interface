@@ -50,6 +50,8 @@ void MainWindow::createWindow()
     QHBoxLayout *radioButtonLayout = new QHBoxLayout;
     radioButtonLayout->addWidget(timeRadioButton);
     radioButtonLayout->addWidget(countdownRadioButton);
+    connect(timeRadioButton, SIGNAL(toggled()), this, SLOT(radioChanged()));
+    connect(countdownRadioButton, SIGNAL(toggled()), this, SLOT(radioChanged()));
     groupBox->setLayout(radioButtonLayout);
 
     /*
@@ -120,15 +122,18 @@ void MainWindow::createWindow()
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
 
+    timeWidget = new QWidget;
+
+    timeWidget->setLayout(dateTimeLayout);
+
     // Add everything to the main layout
     this->centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(groupBox);
-    mainLayout->addWidget(new QLabel("Specific time"));
-    mainLayout->addLayout(dateTimeLayout);
-    mainLayout->addWidget(line);
-    mainLayout->addWidget(new QLabel("Countdown time"));
-    mainLayout->addLayout(spinnerLayout);
+    mainLayout->addWidget(timeWidget);
+    //mainLayout->addLayout(dateTimeLayout);
+    //mainLayout->addWidget(line);
+    //mainLayout->addLayout(spinnerLayout);
     mainLayout->addLayout(currentTimeLayout);
     mainLayout->addLayout(remainingTimeLayout);
     mainLayout->addLayout(buttonLayout);
@@ -210,6 +215,12 @@ void MainWindow::cancelClicked()
 void MainWindow::exitClicked()
 {
     this->closeWindow();
+}
+
+// Slot for radio button change
+void MainWindow::radioChanged()
+{
+
 }
 
 // Overrite the close event to ensure the child threads are closed.
